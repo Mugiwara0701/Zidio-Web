@@ -1,13 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Nunito', sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root {
+  --bg-color: #ffffff; /* Default light background */
+  --text-color: #000000; /* Default light text */
 }
+
+.light {
+  --bg-color: #ffffff; /* Light background */
+  --text-color: #000000; /* Dark text */
+}
+
+.dark {
+  --bg-color: #1a202c; /* Dark background */
+  --text-color: #ffffff; /* Light text */
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+}
+
+
+/* Add these styles for the button */
+
+.btn-slide-bg {
+  position: relative;
+  overflow: hidden; /* Hide the sliding effect */
+  color: white; /* Text color */
+  transition: color 0.4s ease; /* Smooth text color transition */
+}
+
+/* Create the sliding effect */
+.btn-slide-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white; /* Background color on hover */
+  z-index: 0; /* Behind the text */
+  transition: transform 0.4s ease; /* Smooth transition for sliding */
+  transform: translateX(-100%); /* Start position */
+}
+
+/* Change the text color on hover */
+.btn-slide-bg:hover {
+  color: black; /* Change text color to black */
+}
+
+/* Slide in effect on hover */
+.btn-slide-bg:hover::before {
+  transform: translateX(0); /* Slide in */
+}
+
+
+
