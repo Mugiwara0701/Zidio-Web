@@ -1,94 +1,174 @@
 import React, { useEffect, useState } from "react";
-import { FaSun, FaMoon } from "react-icons/fa";
 import "./Hero.css";
-import { useTheme } from "../../ThemeContext"; // Import the theme context
 
 function Hero() {
-  const [isVisible, setIsVisible] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const { theme, toggleTheme } = useTheme(); // Use theme context
+  const [isLoaderVisible, setIsLoaderVisible] = useState(true); // Loader state
+  const [isVisible, setIsVisible] = useState(false); // Hero content visibility
+  const [isLoaded, setIsLoaded] = useState(false); // Image load state
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsVisible(true);
-    }, 700);
+    const loaderTimer = setTimeout(() => {
+      setIsLoaderVisible(false);
+      setIsVisible(true); // Show hero content after loader is gone
+    }, 1000);
 
-    return () => clearTimeout(timer);
+    return () => clearTimeout(loaderTimer); // Cleanup timer on unmount
   }, []);
 
-  return (
-    <div
-      className="relative bg-center z-[-1] bg-cover h-[500px]"
-      style={{
-        backgroundImage:
-          "url('https://www.microsoft.com/en-us/research/uploads/prod/2023/03/AI_Microsoft_Research_Header_1920x720.png')",
-      }}
-    >
-      <div
-        className={`absolute top-[42%] left-[8%] transform -translate-y-1/2 pl-2 ${
-          isVisible ? "translate-x-0 opacity-100" : "-translate-x-5 opacity-0"
-        } transition-transform duration-700`}
-      >
-        <h1 className="text-gray-300">SOFTWARE DEVELOPMENT & CONSULTANCY</h1>
-        <br />
-        <p className="text-black font-bold text-4xl font-sans">
-          BUSINESS INNOVATION
-        </p>
-        <br />
-        <p className="text-black font-bold text-4xl font-sans">
-          THROUGH TECHNOLOGY
-        </p>
-        <br />
-        <p className="text-gray-300">
-          Leading Business Evolution with Tailored and{" "}
-          <p>Innovative Software Solutions for Sustainable Growth</p>
-        </p>
-        <br /> <br />
-        <div className="space-x-4 hover:bg-transparent">
-          <button className="btn-slide-bg border-blue-600 mb-2 bg-blue-600 rounded px-6 py-2 cursor-pointer hover:bg-transparent">
-            Let's Talk &nbsp; →
-          </button>
-          <button className="btn-slide-bg border-blue-600 mb-2 bg-blue-600 rounded px-4 py-2 space-x-2 cursor-pointer">
-            Read More &nbsp; →
-          </button>
-        </div>
-      </div>
-      <div className="absolute top-1/2 right-0 transform -translate-y-1/2 pr-4 w-[450px] h-[450px] flex space-x-4">
-        <img
-          src="./hero-shape.png"
-          alt="shape"
-          className="w-[100px] h-[100px] animate-slow-spin"
-        />
-        <img
-          src="./hero-thumb.png"
-          alt="boy"
-          onLoad={() => setIsLoaded(true)}
-          className={`${
-            isLoaded
-              ? "transition-all duration-1000 ease-in-out filter-none"
-              : "filter blur-lg"
-          }`}
-        />
-      </div>
+  const handleImageLoad = () => {
+    setIsLoaded(true);
+  };
 
-      {/* Theme Switcher */}
-      <div className="absolute bottom-5 right-5 flex items-center z-10">
-        {" "}
-        {/* Added z-10 here */}
-        <label className="switch">
-          <input
-            type="checkbox"
-            onChange={toggleTheme}
-            checked={theme === "dark"}
-          />
-          <span className="slider"></span>
-        </label>
-        {theme === "light" ? (
-          <FaMoon className="text-gray-800 ml-2" size={24} />
-        ) : (
-          <FaSun className="text-yellow-500 ml-2" size={24} />
-        )}
-      </div>
+  const cardData = [
+    {
+      title: "3+ Years Experience",
+      description:
+        "Over 3 years of expertise delivering unparalleled solutions and insights for your success",
+      image: "./card-image-1.png",
+    },
+    {
+      title: "Dedicated Members",
+      description:
+        "Passionate team members dedicated to exceeding expectations and achieving mutual success",
+      image: "./card-image-2.png",
+    },
+    {
+      title: "Valuable Supports",
+      description:
+        "Tailored support and guidance ensuring reliability and innovation every step of the way",
+      image: "./card-image-3.png",
+    },
+  ];
+
+  return (
+    <div>
+      {/* Full Page Loader */}
+      {isLoaderVisible && (
+        <div className="full-loader">
+          <div className="loader">
+            <div className="dot"></div>
+            <div className="dot" style={{ animationDelay: "0.2s" }}></div>
+            <div className="dot" style={{ animationDelay: "0.4s" }}></div>
+          </div>
+        </div>
+      )}
+
+      {/* Hero Section */}
+      {!isLoaderVisible && (
+        <div
+          className="relative bg-center bg-cover h-[500px] sm:h-[400px] md:h-[600px] lg:h-[700px] z-[-1]"
+          style={{
+            backgroundImage:
+              "url('https://www.microsoft.com/en-us/research/uploads/prod/2023/03/AI_Microsoft_Research_Header_1920x720.png')",
+          }}
+        >
+          <div
+            className={`absolute top-[42%] left-[8%] transform -translate-y-1/2 pl-2 ${
+              isVisible ? "translate-x-0 opacity-100" : "-translate-x-5 opacity-0"
+            } transition-transform duration-700`}
+          >
+            <h1 className="text-gray-300 text-xl sm:text-2xl md:text-3xl lg:text-2xl">
+              SOFTWARE DEVELOPMENT & CONSULTANCY
+            </h1>
+            <br />
+            <p className="text-black font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-sans">
+              BUSINESS INNOVATION
+            </p>
+            <br />
+            <p className="text-black font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-sans">
+              THROUGH TECHNOLOGY
+            </p>
+            <br />
+            <p className="text-gray-300 text-base sm:text-lg md:text-xl">
+              Leading Business Evolution with Tailored and{" "}
+              <p>Innovative Software Solutions for Sustainable Growth</p>
+            </p>
+            <br /> <br />
+            <div className="space-x-4 hover:bg-transparent">
+              <button className="btn-slide-bg border-blue-600 mb-2 bg-blue-600 rounded px-6 py-2 cursor-pointer hover:bg-transparent">
+                Let's Talk &nbsp; →
+              </button>
+              <button className="btn-slide-bg border-blue-600 mb-2 bg-blue-600 rounded px-4 py-2 space-x-2 cursor-pointer">
+                Read More &nbsp; →
+              </button>
+            </div>
+          </div>
+
+          <div className="absolute top-1/2 right-0 transform -translate-y-1/2 pr-4 w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] md:w-[400px] md:h-[400px] lg:w-[450px] lg:h-[450px] flex space-x-4">
+            <img
+              src="./hero-shape.png"
+              alt="shape"
+              className="w-[50px] h-[50px] sm:w-[75px] sm:h-[75px] md:w-[100px] md:h-[100px] animate-slow-spin"
+            />
+            <img
+              src="./hero-thumb.png"
+              alt="boy"
+              onLoad={handleImageLoad} // Call handleImageLoad when image loads
+              className={`${
+                isLoaded
+                  ? "transition-all duration-1000 ease-in-out filter-none"
+                  : "filter blur-lg"
+              }`}
+            />
+          </div>
+        </div>
+      )}
+
+      {/* Card Section */}
+      <div className="flex flex-col sm:flex-row sm:justify-center sm:space-x-8 lg:space-x-20 space-y-8 sm:space-y-0 -mt-14 w-full px-8">
+      {cardData.map((card, index) => (
+        <div
+          key={index}
+          className="card bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4 w-full sm:w-80 flex flex-col items-center"
+        >
+          <div className="flex items-center justify-center h-24">
+            <img
+              src={card.image}
+              alt={`card ${index + 1}`}
+              className="w-12 h-12 object-cover justify-center rounded-t-lg mb-4"
+            />
+          </div>
+
+          {/* Title will turn black when the theme is dark */}
+          <h2 className="text-lg font-bold text-center dark:text-black">
+            {card.title}
+          </h2>
+          <p className="text-gray-600 dark:text-gray-400 text-center mt-2">
+            {card.description}
+          </p>
+          <div className="text-center mt-4">
+            <span className="text-2xl text-gray-600 dark:text-gray-300">→</span>
+            <span className="read-more text-gray-600 hidden cursor-pointer">Read More</span>
+          </div>
+
+          {/* Read More Content */}
+          
+          
+         
+        </div>
+
+      ))}
+
+      
+
+      
+    </div>
+      <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <div className="flex items-center justify-between">
+  <div className="w- space-x-5">
+    <img
+      src="./Pic.png" // Replace with your image URL
+      alt="Description"
+      className="w-40 h-40 object-cover overflow-clip overflow-clip-margins rounded-lg space-x-5"
+    />
+  </div>
+  <div className="w-1/2 px-8">
+    <h2 className="text-2xl font-bold mb-4">Title</h2>
+    <p className="text-gray-600">
+      This is some text. You can replace this with your own content.
+    </p>
+  </div>
+</div>
     </div>
   );
 }

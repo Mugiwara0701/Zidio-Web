@@ -1,13 +1,11 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
-import "./index.css";
+import ReactDOM from "react-dom";
 import App from "./App";
-import { ThemeProvider } from "./ThemeContext";
+import { ThemeProvider } from "./ThemeContext"; // Adjust path as needed
 
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
+ReactDOM.render(
   <ThemeProvider>
     <App />
-  </ThemeProvider>
+  </ThemeProvider>,
+  document.getElementById("root")
 );

@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { IoLocationOutline, IoTimeOutline } from 'react-icons/io5';
 import { MdEmail } from 'react-icons/md';
-import { FaFacebookF, FaTwitter, FaLinkedinIn, FaYoutube } from 'react-icons/fa';
+import { FaFacebookF, FaTwitter, FaLinkedinIn, FaYoutube, FaMoon, FaSun } from 'react-icons/fa';
+import { useTheme } from '../../ThemeContext'; // Import Theme Context
 
 function Header() {
   const [isVisible, setIsVisible] = useState(false);
+  const { theme, toggleTheme } = useTheme(); // Use theme context
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -40,11 +42,39 @@ function Header() {
           <IoTimeOutline className='mr-1' />
           <span className='text-black dark:text-white font-bold'>9.00 am - 5.30 pm</span>
         </div>
+
+        {/* Social Media Icons */}
         <div className="flex space-x-4">
-          <FaFacebookF className='hover:text-blue-800 transition duration-500 cursor-pointer text-lg'/>
-          <FaTwitter className='hover:text-blue-700 transition duration-500 cursor-pointer text-lg'/>
-          <FaLinkedinIn className='hover:text-blue-400 transition duration-500 cursor-pointer text-lg'/>
-          <FaYoutube className='hover:text-red-700 transition duration-500 cursor-pointer text-lg'/>
+          <a href="https://www.facebook.com/people/Zidio-Development/61556709391417/">
+            <FaFacebookF className='hover:text-blue-800 transition duration-500 cursor-pointer text-lg' />
+          </a>
+          <a href="https://x.com/zidioDev">
+            <FaTwitter className='hover:text-blue-500 transition duration-500 cursor-pointer text-lg' />
+          </a>
+         <a href="https://www.linkedin.com/company/zidio-development/">
+         <FaLinkedinIn className='hover:text-blue-600 transition duration-500 cursor-pointer text-lg' />
+         </a>
+          <a href="https://www.youtube.com/channel/UCvxJRddqZowVyN6AXjylnMg">
+
+          <FaYoutube className='hover:text-red-600 transition duration-500 cursor-pointer text-lg' />
+          </a>
+        </div>
+
+        {/* Theme Toggle Icon */}
+        <div className="ml-6">
+          {theme === 'light' ? (
+            <FaMoon
+              className="text-gray-800 cursor-pointer"
+              size={24}
+              onClick={toggleTheme}
+            />
+          ) : (
+            <FaSun
+              className="text-yellow-500 cursor-pointer"
+              size={24}
+              onClick={toggleTheme}
+            />
+          )}
         </div>
       </div>
     </div>
@@ -52,3 +82,4 @@ function Header() {
 }
 
 export default Header;
+
