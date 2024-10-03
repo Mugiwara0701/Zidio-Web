@@ -157,7 +157,7 @@ function Hero() {
     <div className="flex items-center justify-between">
   <div className="w- space-x-5">
     <img
-      src="./Pic.png" // Replace with your image URL
+      src="./Pic.png" 
       alt="Description"
       className="w-40 h-40 object-cover overflow-clip overflow-clip-margins rounded-lg space-x-5"
     />
