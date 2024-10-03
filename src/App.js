@@ -4,6 +4,7 @@ import './index.css'
 import Header from './Components/Header/Header'
 import Navbar from './Components/Navbar/Navbar'
 import Hero from './Components/Hero/Hero'
+import Login from './Components/Pages/Login'
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -24,6 +25,7 @@ function App() {
       <Header/>
       <Navbar toggleTheme={toggleTheme}/>
       <Hero/>
+      {/* <Login/> */}
     </div>
   )
 }

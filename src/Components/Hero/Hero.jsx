@@ -115,60 +115,22 @@ function Hero() {
       )}
 
       {/* Card Section */}
-      <div className="flex flex-col sm:flex-row sm:justify-center sm:space-x-8 lg:space-x-20 space-y-8 sm:space-y-0 -mt-14 w-full px-8">
-      {cardData.map((card, index) => (
-        <div
-          key={index}
-          className="card bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4 w-full sm:w-80 flex flex-col items-center"
-        >
-          <div className="flex items-center justify-center h-24">
-            <img
-              src={card.image}
-              alt={`card ${index + 1}`}
-              className="w-12 h-12 object-cover justify-center rounded-t-lg mb-4"
-            />
-          </div>
-
-          {/* Title will turn black when the theme is dark */}
-          <h2 className="text-lg font-bold text-center dark:text-black">
-            {card.title}
-          </h2>
-          <p className="text-gray-600 dark:text-gray-400 text-center mt-2">
-            {card.description}
-          </p>
-          <div className="text-center mt-4">
-            <span className="text-2xl text-gray-600 dark:text-gray-300">→</span>
-            <span className="read-more text-gray-600 hidden cursor-pointer">Read More</span>
-          </div>
-
-          {/* Read More Content */}
-          
-          
-         
-        </div>
-
-      ))}
-
-      
-
-      
+      <div className="card-stack-container">
+  {cardData.map((card, index) => (
+    <div className="card" id={`card${index + 1}`} key={index}>
+      <img 
+        src={card.image} 
+        alt={card.title} // Add alt text for accessibility
+        className="card-image" // Add a class for styling (if needed)
+      />
+      <h1 className="font-bold">{card.title}</h1>
+      <p>{card.description}</p>
     </div>
-      <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-    <div className="flex items-center justify-between">
-  <div className="w- space-x-5">
-    <img
-      src="./Pic.png" 
-      alt="Description"
-      className="w-40 h-40 object-cover overflow-clip overflow-clip-margins rounded-lg space-x-5"
-    />
-  </div>
-  <div className="w-1/2 px-8">
-    <h2 className="text-2xl font-bold mb-4">Title</h2>
-    <p className="text-gray-600">
-      This is some text. You can replace this with your own content.
-    </p>
-  </div>
+  ))}
 </div>
+
+      <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+   
     </div>
   );
 }

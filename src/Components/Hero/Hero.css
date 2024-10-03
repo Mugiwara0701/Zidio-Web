@@ -19,50 +19,86 @@
 
 /* Card hover animation */
 /* Card styles */
-.card {
+.card-stack-container {
   position: relative;
+  width: 700px; /* Increase the width (change to your desired value) */
+  /* Set a max-width to prevent it from getting too wide */
+  margin: 0 auto; /* Center the container horizontally */
+  display: flex; /* Use flexbox for card layout */
+  justify-content: center; /* Center cards within the container */
+  gap: 20px; /* Add some space between cards */
+  flex-wrap: wrap; /* Allow cards to wrap if they overflow */
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+
+/* Common card styles */
+.card {
+  position: absolute;
+ 
+  width: 200px;
+  height: 200px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  align-items: center;
   background-color: white;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  
-  border-radius: 12px;
+  border-radius: 10px;
+  padding: 20px;
+  color:black;
+  text-align: center;
+  transition: all 0.5s ease-in-out;
+  z-index: 1;
+  opacity: 1;
+  padding: 15px;
   overflow: hidden;
-  transition: transform 0.5s ease-in-out;
-  background-size: cover;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+}
+.card img {
+  width: 34px; 
+  height: 34px; 
+  border-radius: 5px; 
+  margin-bottom: 10px; 
 }
 
-/* Hover effect to show background texture */
-.card:hover {
-  background-image: url('../../../public/feature-box-shape.png'); /* Replace with the actual texture image path */
-  background-blend-mode: overlay;
-  background-color: rgba(255, 255, 255, 0.9); /* Optional: Adjust the overlay color */
-  transform: rotate(360deg); /* Add a spinning effect */
-  transition: transform 0.5s ease-in-out;
+
+/* Initial stacking of the cards */
+#card1 {
+  z-index: 3;
+}
+#card2 {
+  z-index: 2;
+}
+#card3 {
+  z-index: 1;
 }
 
-.card:hover .arrow {
-  display: none;
+/* When the stack is hovered over, expand the cards */
+.card-stack-container:hover #card1 {
+  transform: translateX(-300px);
+  z-index: 3;
+  transition-delay: 0.1s;
 }
 
-.card:hover .read-more {
-  display: inline;
+.card-stack-container:hover #card2 {
+  transform: translateX(0);
+  z-index: 2;
+  transition-delay: 0.1s;
 }
 
-.card-title {
-  font-size: 1.5rem; /* Title font size */
-  color: #333; /* Dark color for title */
-  font-weight: bold; /* Bold title */
+.card-stack-container:hover #card3 {
+  transform: translateX(300px);
+  z-index: 1;
+  transition-delay: 0.1s;
 }
 
-.card-description {
-  color: #555; /* Slightly lighter color for description */
-  font-size: 1rem; /* Description font size */
+/* When hover is removed, stack the cards back to their original positions */
+.card-stack-container:not(:hover) #card1,
+.card-stack-container:not(:hover) #card2,
+.card-stack-container:not(:hover) #card3 {
+  transform: translateX(0);
 }
 
-.read-more {
-  font-size: 1rem;
-  color: #000;
-  transition: opacity 0.3s ease-in-out;
-}
 
 
 /* Hero Section Styling */
