@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../index.css";
-import { IoSearch } from "react-icons/io5";
+import { IoSearch, IoMenu, IoClose } from "react-icons/io5";
 
 function Navbar() {
   const [isVisible, setIsVisible] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -26,25 +27,40 @@ function Navbar() {
     setSearchQuery(""); // Clear the search query when closing
   };
 
+  // Function to handle the hamburger menu toggle
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
-    <div className="relative flex flex-col md:flex-row justify-between items-center md:px-20 ">
+    <div className="relative flex flex-col md:flex-row justify-between items-center md:px-20 py-4">
+      {/* Logo Section */}
       <div
-        className={`flex flex-col md:flex-row md:space-x-6 transform ${
+        className={`flex items-center mb-1 md:mb-0 w-[140px] h-[140px] ${
           isVisible ? "translate-x-0 opacity-100" : "-translate-x-5 opacity-0"
         } transition-transform duration-700 backdrop-filter backdrop-blur-lg`}
       >
-        <div className="flex items-center mb-1 md:mb-0 w-[140px] h-[140px] ">
-          <img src="./zidio.png" alt="zidio" />
-        </div>
+        <img src="./zidio.png" alt="zidio" />
       </div>
 
-      {/* Right Section */}
+      {/* Hamburger Icon */}
+      <div className="md:hidden">
+        <button
+          className="text-3xl text-gray-700 focus:outline-none"
+          onClick={toggleMenu}
+          aria-label="Toggle Menu"
+        >
+          {isMenuOpen ? <IoClose /> : <IoMenu />}
+        </button>
+      </div>
+
+      {/* Right Section - Nav Links, Search & Quote Button */}
       <div
-        className={`flex flex-col md:flex-row md:space-x-6 transform ${
-          isVisible ? "translate-x-0 opacity-100" : "-translate-x-5 opacity-0"
-        } transition-transform duration-700 backdrop-filter backdrop-blur-lg items-center justify-center space-x-7`}
+        className={`${
+          isMenuOpen ? "block" : "hidden"
+        } md:flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6`}
       >
-        <ul className="flex space-x-7 ">
+        <ul className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6">
           <li className="hover:text-blue-800 transition duration-500 cursor-pointer text-lg">
             <a href="#home">Home</a>
           </li>
@@ -57,7 +73,7 @@ function Navbar() {
           <li className="hover:text-blue-800 transition duration-500 cursor-pointer text-lg">
             <a href="#contact">Contact</a>
           </li>
-          {/* Replace the anchor with a button for search */}
+          {/* Search Icon */}
           <li className="flex items-center hover:text-blue-800 transition duration-500 cursor-pointer text-lg">
             <button
               onClick={openSearchModal}
@@ -68,7 +84,8 @@ function Navbar() {
             </button>
           </li>
         </ul>
-        <button className="bg-blue-700 text-white rounded p-[11px] px-6 py-4">
+        {/* Get a Quote Button */}
+        <button className="bg-blue-700 text-white rounded p-2 px-6 py-4 mt-4 md:mt-0">
           Get a Quote
         </button>
       </div>

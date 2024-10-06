@@ -64,7 +64,9 @@ function Hero() {
         >
           <div
             className={`absolute top-[42%] left-[8%] transform -translate-y-1/2 pl-2 ${
-              isVisible ? "translate-x-0 opacity-100" : "-translate-x-5 opacity-0"
+              isVisible
+                ? "translate-x-0 opacity-100"
+                : "-translate-x-5 opacity-0"
             } transition-transform duration-700`}
           >
             <h1 className="text-gray-300 text-xl sm:text-2xl md:text-3xl lg:text-2xl">
@@ -113,24 +115,34 @@ function Hero() {
           </div>
         </div>
       )}
-
+<br /><br /><br />
       {/* Card Section */}
       <div className="card-stack-container">
-  {cardData.map((card, index) => (
-    <div className="card" id={`card${index + 1}`} key={index}>
-      <img 
-        src={card.image} 
-        alt={card.title} // Add alt text for accessibility
-        className="card-image" // Add a class for styling (if needed)
-      />
-      <h1 className="font-bold">{card.title}</h1>
-      <p>{card.description}</p>
-    </div>
-  ))}
-</div>
+        {cardData.map((card, index) => (
+          <div className="card" id={`card${index + 1}`} key={index}>
+            <img
+              src={card.image}
+              alt={card.title} // Add alt text for accessibility
+              className="card-image" // Add a class for styling (if needed)
+            />
+            <h1 className="font-bold">{card.title}</h1>
+            <p>{card.description}</p>
+          </div>
+        ))}
+      </div>
 
-      <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-   
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
     </div>
   );
 }

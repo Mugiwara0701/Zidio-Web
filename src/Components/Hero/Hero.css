@@ -21,7 +21,7 @@
 /* Card styles */
 .card-stack-container {
   position: relative;
-  width: 700px; /* Increase the width (change to your desired value) */
+  width: 100%; /* Increase the width (change to your desired value) */
   /* Set a max-width to prevent it from getting too wide */
   margin: 0 auto; /* Center the container horizontally */
   display: flex; /* Use flexbox for card layout */
@@ -30,12 +30,25 @@
   flex-wrap: wrap; /* Allow cards to wrap if they overflow */
   cursor: pointer;
   transition: all 0.5s ease-in-out;
+  justify-content: space-around;
+}
+
+.card:hover {
+  transform: scale(5);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  z-index: 100; /* Ensure it stays above other elements */
+}
+
+.card.dark-theme {
+  background-color: rgba(20, 20, 20, 0.8); /* Dark background with opacity */
+  color: white; /* Change text color to white */
+  backdrop-filter: blur(10px); /* Add blur effect */
 }
 
 /* Common card styles */
 .card {
   position: absolute;
- 
+  /* background-color: white;  */
   width: 200px;
   height: 200px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
