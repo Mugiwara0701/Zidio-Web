@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../../index.css";
+import { Link } from "react-router-dom";
 import { IoSearch, IoMenu, IoClose } from "react-icons/io5";
 
 function Navbar() {
@@ -62,16 +62,16 @@ function Navbar() {
       >
         <ul className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6">
           <li className="hover:text-blue-800 transition duration-500 cursor-pointer text-lg">
-            <a href="#home">Home</a>
+            <Link to="/">Home</Link>
           </li>
           <li className="hover:text-blue-800 transition duration-500 cursor-pointer text-lg">
-            <a href="#about">About</a>
+            <Link to="/about">About</Link>
           </li>
           <li className="hover:text-blue-800 transition duration-500 cursor-pointer text-lg">
-            <a href="#services">Services</a>
+            <Link to="/services">Services</Link>
           </li>
           <li className="hover:text-blue-800 transition duration-500 cursor-pointer text-lg">
-            <a href="#contact">Contact</a>
+            <Link to="/contact">Contact</Link>
           </li>
           {/* Search Icon */}
           <li className="flex items-center hover:text-blue-800 transition duration-500 cursor-pointer text-lg">
@@ -102,7 +102,8 @@ function Navbar() {
             className="absolute w-full h-full flex items-center justify-center transition-transform duration-700 transform scale-0"
             style={{
               transform: isModalVisible ? "scale(1)" : "scale(0.9)",
-              transition: "transform 0.5s ease-in-out, opacity 0.5s ease-in-out",
+              transition:
+                "transform 0.5s ease-in-out, opacity 0.5s ease-in-out",
             }}
             onClick={(e) => e.stopPropagation()} // Prevent closing modal when clicking inside it
           >

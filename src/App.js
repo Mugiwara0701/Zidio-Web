@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react'
-import './index.css'
+import React, { useEffect, useState } from "react";
+import "./index.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Header from "./Components/Header/Header";
+import Navbar from "./Components/Navbar/Navbar";
 
-import Header from './Components/Header/Header'
-import Navbar from './Components/Navbar/Navbar'
-import Hero from './Components/Hero/Hero'
-import Login from './Components/Pages/Login'
-import Grid from './Components/Grid/grid'
+import Contact from "./Components/Contact/Contact";
+import Home from "./Components/Home/Home";
+import About from "./Components/About/About";
+import Services from "./Components/Services/Services";
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -22,14 +24,21 @@ function App() {
     }
   }, [darkMode]);
   return (
-    <div className={darkMode ? "dark": ""}>
-      <Header/>
-      <Navbar toggleTheme={toggleTheme}/>
-      <Hero/>
-      <Grid/>
+    <div className={darkMode ? "dark" : ""}>
+      <Router>
+        <Header />
+        <Navbar toggleTheme={toggleTheme} />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/services" element={<Services />} />
+        </Routes>
+        {/* <Grid /> */}
+      </Router>
       {/* <Login/> */}
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
