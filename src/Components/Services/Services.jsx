@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { ThemeContext } from "../../ThemeContext";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -8,6 +8,17 @@ import { Pagination, EffectCoverflow, Navigation } from "swiper/modules";
 
 function Services() {
   const { theme } = useContext(ThemeContext);
+  const [isLoaderVisible, setIsLoaderVisible] = useState(true);
+  
+
+  useEffect(() => {
+    const loaderTimer = setTimeout(() => {
+      setIsLoaderVisible(false);
+      
+    }, 1000);
+
+    return () => clearTimeout(loaderTimer); 
+  }, []);
 
   const services = [
     {
@@ -62,6 +73,16 @@ function Services() {
 
   return (
     <div>
+      {/* Full Page Loader */}
+      {isLoaderVisible && (
+        <div className="full-loader">
+          <div className="loader">
+            <div className="dot"></div>
+            <div className="dot" style={{ animationDelay: "0.2s" }}></div>
+            <div className="dot" style={{ animationDelay: "0.4s" }}></div>
+          </div>
+        </div>
+      )}
       {/* Video and text section */}
       <div className="relative bg-center bg-cover h-[500px] sm:h-[400px] md:h-[600px] lg:h-[700px] z-[-1]">
         <video
