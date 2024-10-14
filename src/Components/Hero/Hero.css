@@ -20,12 +20,12 @@
 /* Card hover animation */
 /* Card styles */
 .card-stack-container {
-  position: relative;
+  /* position: relative; */
   width: 100%; /* Increase the width (change to your desired value) */
   /* Set a max-width to prevent it from getting too wide */
   margin: 0 auto; /* Center the container horizontally */
   display: flex; /* Use flexbox for card layout */
-  justify-content: center; /* Center cards within the container */
+  /* justify-content: center; Center cards within the container */
   gap: 20px; /* Add some space between cards */
   flex-wrap: wrap; /* Allow cards to wrap if they overflow */
   cursor: pointer;
@@ -34,23 +34,19 @@
 }
 
 .card:hover {
-  transform: scale(5);
+  transform: scale(1.1);
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-  z-index: 100; /* Ensure it stays above other elements */
+  z-index: 100; 
 }
 
-.card.dark-theme {
-  background-color: rgba(20, 20, 20, 0.8); /* Dark background with opacity */
-  color: white; /* Change text color to white */
-  backdrop-filter: blur(10px); /* Add blur effect */
-}
+
 
 /* Common card styles */
 .card {
   position: absolute;
   /* background-color: white;  */
-  width: 200px;
-  height: 200px;
+  width: 300px;
+  height: 300px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   align-items: center;
   background-color: white;
@@ -66,12 +62,19 @@
   flex-direction: column;
   display: flex;
   justify-content: center;
+  /* margin: 20px; */
 }
 .card img {
-  width: 34px; 
-  height: 34px; 
+  width: 50px; 
+  height: 50px; 
   border-radius: 5px; 
-  margin-bottom: 10px; 
+  margin-bottom: 80px; 
+}
+
+.card.dark-theme {
+  background-color: rgba(20, 20, 20, 0.8); /* Dark background with opacity */
+  color: white; /* Change text color to white */
+  backdrop-filter: blur(10px); /* Add blur effect */
 }
 
 

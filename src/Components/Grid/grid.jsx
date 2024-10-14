@@ -22,11 +22,11 @@ function Grid() {
 
       <div class="content">
         <div>
-          <p>Software Development & Services</p>
+          <p className="font-bold">Software Development & Services</p>
           <h1>
             Your Reliable Partner for IT Services Dedicated to Your Success
           </h1>
-          <span>
+          <span className="text">
             At Zidio, we're your trusted IT services partner, ensuring your
             success with reliable solutions tailored to your business needs.
             Count on us for robust software development, comprehensive IT

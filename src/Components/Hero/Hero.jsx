@@ -115,7 +115,9 @@ function Hero() {
           </div>
         </div>
       )}
-<br /><br /><br />
+      <br />
+      <br />
+      <br />
       {/* Card Section */}
       <div className="card-stack-container">
         {cardData.map((card, index) => (
