@@ -4,10 +4,11 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./Components/Header/Header";
 import Navbar from "./Components/Navbar/Navbar";
 
-import Contact from "./Components/Contact/Contact";
+
 import Home from "./Components/Home/Home";
 import About from "./Components/About/About";
 import Services from "./Components/Services/Services";
+
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -30,7 +31,7 @@ function App() {
         <Navbar toggleTheme={toggleTheme} />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/contact" element={<Contact />} />
+          {/* <Route path="/contact" element={<ContactUs />} /> */}
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
         </Routes>
