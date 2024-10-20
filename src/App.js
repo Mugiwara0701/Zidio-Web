@@ -6,8 +6,10 @@ import Navbar from "./Components/Navbar/Navbar";
 
 
 import Home from "./Components/Home/Home";
-import About from "./Components/About/About";
+import NewAbout from "./Components/About/NewAbout";
 import Services from "./Components/Services/Services";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+
 
 
 function App() {
@@ -32,7 +34,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           {/* <Route path="/contact" element={<ContactUs />} /> */}
-          <Route path="/about" element={<About />} />
+          <Route path="/about" element={<NewAbout />} />
           <Route path="/services" element={<Services />} />
         </Routes>
         {/* <Grid /> */}

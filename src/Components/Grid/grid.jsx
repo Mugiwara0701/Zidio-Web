@@ -7,7 +7,7 @@ import "./grid.css";
 function Grid() {
   return (
     <section class="flexing">
-      <div class="grid">
+      <div class="grids">
         <div class="item"></div>
         <div class="item"></div>
         <div class="item"></div>
